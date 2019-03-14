@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Coursera吴恩达《神经网络与深度学习》笔记（2.18）神经网络基础-Jlogistic 损失函数的解释 - Love Letter</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content=" 2.18 （选修）logistic 损失函数的解释（Explanation of logistic regression cost function）
+在前面的视频中，我们已经分析了逻辑回归的损失,"> 
+    <meta name="author" content="salcabar"> 
+    <link rel="alternative" href="atom.xml" title="Love Letter" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">Love Letter</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">2018读书笔记——货币金融学（弗雷德里克.S.米什金）(三)</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">2018读书笔记——货币金融学（弗雷德里克.S.米什金）(三)</h1>
+        <div class="stuff">
+            <span>六月 22, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/金融/">金融</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h3><span id="第-6-章-利率的风险结构与期限"> 第 6 章 利率的风险结构与期限</span></h3>
+<p>能够说明并解释影响利率的风险结构的三种因素</p>
+<p>能够列举并解释用以说明期限不同的债券利率存在差异的三种理论</p>
+<p>本章考察的是不同利率之间的联系</p>
+<p>概念：</p>
+<p>1.利率的风险结构：为什么到期期限相同的债券有着不同的利率，这些理论之间的联系</p>
+<p>2.利率的期限结构：到期期限不同的债券之间的利率联系。</p>
+<p>3.Aaa 级企业债券</p>
+<p>4.Baa 级企业债券</p>
+<p>5.违约风险：是指债券发行人无法或者不愿意履行其之前承诺的支付利息或债券到期时偿付面值的义务，这<br>
+是影响债券利率的一个重要因素</p>
+<p>6.风险溢价：有违约风险的债券和无违约风险债券之间的利差，指人们为持有风险债券所必须赚取的额外利息</p>
+<p>7.具有违约风险的债券风险溢价总为正，且风险溢价随着违约风险的上升而增加</p>
+<p>8.信用评级机构：提供信息，表明这些投资顾问违约的可能性</p>
+<p>9.投资级债券违约风险较小，其评级为 Baa 或以上。评级低于 Baa 的债券具有较高的违约风险，被形象地成为投机债券或者垃圾债券。由于这些债券的利率往往高于投资级债券，因此又被成为高收益债券。</p>
+<p>10.流动性：在必要时以较低的成本迅速转化为现金。美国国债的流动性非常好<br>
+推导：假设最初企业债券与国债具有相同的流动性且其他特征完全相同，两张债券初始均衡价格与均衡利率完全相等，由于企业债券的交易范围相对较小，其流动性比国债差，那么对它的需求将会减少，需求曲线将会左移；国债流动性增强，需求曲线会右移，流动性较差的企业债券价格下降，利率上升，流动性较强的国债价格下降，利率上升。</p>
+<p>11.由于市政债券可以抵扣所得税，当它被赋予税收优势的时候，相对于国债的税后语气回报率将随之提高，受欢迎程度将增加，需求量上升的时候，需求曲线右移，价格上升，利率随之下降；国债需求量下降，需求曲线向左位移，价格下降，同时利率上升。<br>
+注意：市政债券不属于无违约风险债券，州和地方政府可能对其过去发行的市政债券违约。市政债券可以抵税</p>
+<p>12.利率的期限结构（到期期限不同利率之间的联系）</p>
+<p>13.风险 流动性和税收政策相同的债券收益率连接成一条曲线，也就是收益率曲线(yield curve)描述了特定利率债券的利率的期限结构。</p>
+<p>14.向上倾斜 平坦和向下倾斜的（翻转的收益率曲线）</p>
+<p>15.向上倾斜：短期利率低于长期利率<br>
+平坦：短期利率和长期利率相等<br>
+向下倾斜：短期利率高于长期利率</p>
+<p>16.预期理论：长期债券的利率等于在其有效期内人们所预期的短期利率的平均值，预期理论认为到期期限不同的债券具有不同的利率的原因在于，在未来不同的时间段内，短期利率的预期值是不同的。</p>
+<p>17.计算：<br>
+两种投资策略：a 购买 1 年期债券，当其在 1 年后到期时，再购买另外一个 1 年期债券<br>
+b 购买 2 年期债券，持有至到期日</p>
+<p>预期理论认为，收益率曲线向上倾斜说明市场预期未来的短期利率将上升，如果当前长期利率高于短期利率，说明未来短期利率的平均值将高于目前的短期利率。但这种情况只有在未来短期利率预期将上升的时候才会发生。</p>
+<p>解释：随着时间推移，不同到期期限的债券利率有通向运动的趋势。从历史上看，短期利率具有如果他在今天上升，则未来趋于更高的特征。因此，短期利率的上升会提高人们对未来短期利率的预期。由于长期利率是未来短期利率预期的平均值，短期利率的上升，会提高长期利率，短期利率和长期利率出现了同向运动的趋势</p>
+<p>解释：如果短期利率较低，收益率曲线倾向于向上倾斜，如果短期利率较高，收益率曲线通常是翻转的，一般来说，短期利率较低，人们通常预期未来短期利率将上升到其正常水平，未来短期利率的平均值高于当前的短期利率。因此，长期利率会大大高于当前的短期利率，收益率曲线向上倾斜。相反，如果短期利率较高人们就会预期他会回落。由于未来短期利率预期的平均值低于当前的短期利率，长期利率会低于短期利率的水平，收益率曲线向下倾斜，呈现出翻转的形状。</p>
+<p>注意：预期理论无法解释事实：收益率曲线通常向上倾斜，典型向上倾斜收益率曲线意味着预期未来短期利率将上升。事实上，未来短期利率有可能是上升也有可能下降，因此根据典型收益率曲线，应当平坦而非向上倾斜的。</p>
+<p>18.分割市场理论：将不同到期期限的债券市场看做完全独立分析和相互分割的。到期期限不同的每种债券的利率取决于该债券的供给与需求，其他到期期限的债券的预期回报率对此毫无影响</p>
+<p>19.流动性溢价理论：长期债券的利率应等于两项之和，第一项是长期债券到期之前预期短期利率的平均值，二是随债券供求状况变动而变动的流动性溢价（期限溢价）</p>
+<p>期限优先理论：假定投资者对某种到期期限的债券有着特别的偏好，更愿意投资这种期限的债券，由于他们偏好某种债券，因此只有当预期回报率足够高的时候，他们才愿意购买其他到期期限的债券。<br>
+流动性溢价和期限优先溢价解释了：<br>
+随着时间推移，不同到期期限债券利率表现出同向运动的趋势<br>
+通常收益率曲线是向上倾斜的<br>
+如果短期利率较低，收益率曲线很可能是陡峭向上倾斜的形状，如果短期利率较高，收益率曲线可能是翻转的 *收益率曲线是预测通货膨胀和经济周期的工具</p>
+<h3><span id="第-7-章-股票市场-理性预期理论与有效市场假定"> 第 7 章 股票市场、理性预期理论与有效市场假定</span></h3>
+<p>本章主要讲了以五个大方面的内容：首先是计算普通股价格，市场如何确定股票价格，理性预期理论，金融市场中的理性预期以及行为金融。</p>
+<p>概念：</p>
+<p>1.基本融资原则：投资的价值可以用整个生命周期内该投资产生的所有现金流量的现值来衡量。<br>
+股票投资：股东获取的收益包括股利 出售价格或者两者之和。</p>
+<p>2.单阶段估值模型：<br>
+PV(现值）=CF(未来价值）/(1+i)^n（复习一下）i=股票的要求回报率<br>
+用以上公式计算未来的预期现金流量的现期折现值</p>
+<p>P0(股票的现价）=Div1/(1+Ke)+P1/(1+Ke)</p>
+<p>Div1：第一年末收到的股利<br>
+Ke:股票投资的要求回报率<br>
+P1：第一阶段末的股票价格，也就是预期的股票售价</p>
+<p>3.推广的股利估值模型：</p>
+<p>推广的多阶段股利估值模型</p>
+<p>P0=D1/(1+Ke)<sup>1+D2/（1+Ke)</sup>2+…+Dn/(1+Ke)<sup>n+Pn/(1+ke)</sup>n</p>
+<p>推广的股利估值模型：</p>
+<p>P0= ∑ Di/(1+ke)^t<br>
+t=1</p>
+<p>4.戈登增长模型</p>
+<p>许多公司每年按照不变的比率增加其股利，将上述公式进行改写，从而反映了这种不变的股利增长率</p>
+<p>P0=[D0*(1+g)<sup>1]/(1+ke)</sup>1+[D0*(1+g)<sup>2]/(1+ke)</sup>2+…+指数换为无穷</p>
+<p>简化为</p>
+<p>P0=[D0*(1+g)]/(ke-g)=D1/(ke-g)</p>
+<p>注意推导过程</p>
+<p>5.市场如何确定股票价格</p>
+<p>注意：价格是由愿意支付最高价格的买主决定的。<br>
+市场价格是由最能有效利用该资产的买主确定的<br>
+信息在资产定价中非常重要</p>
+<p>市场参与者在相互竞价的过程中确定了市场价格，当出现有关该公司的新信息时，预期价格都会发生变化。新信息会引来对未来股利水平和风险程度预期的变化。</p>
+<p>6.货币政策与股票价格：当美联储调低利率时，债券的回报率下降，在股票投资中，投资者愿意接受的回报率 k 随之下降，这会减少戈登增长模型公式的分母，导致股票现价 P0 和股票未来价格的上升。<br>
+利率降低也可能会刺激经济增长，因此股利增长率 g 可能会上升，导致分母减少，引起股票现价 P0 以及股票未来价格的上升。</p>
+<p>7.用戈登模型解释次贷危机为什么会股票崩盘</p>
+<p>8.所有的股票分析方法都基于人们的预期，尤其是对未来现金流量的预期。</p>
+<p>9.适应性预期：当以往的数据发生变化时，预期会随着时间的推移缓慢变化。而适应性预期被认为是错误的是因为人们在形成对某一变量的预期时，不仅根据其过去的数据，对通货膨胀率的预期肯定会受到对未来货币政策的预测以及现在和过去货币政策的影响。</p>
+<p>10.理性预期：认为预期应与利用所有可得信息作出的最优预测，即对将来的最好估计相一致，理性预期等于基于所有可得信息的最优预测，但是这一预测结果并非是完全精确的</p>
+<p>因此：导致预期不合理性的原因主要有：</p>
+<p>(1)人们了解所有可得信息，但不愿费力将自己的预期变成最好的估计</p>
+<p>(2)人们不了解某些可得信息，因此他们对未来的最好估计并不准确</p>
+<p>公式：X<sup>e=X</sup>of</p>
+<p>X^e 代表对这一变量的预期，X^of 表示利用所有可得信息对 X 的最优预测</p>
+<p>对 X 的预期等于基于所有可得信息的最优预测</p>
+<p>11.将理性预期理论应用于金融市场，也就是有效市场假定，也叫做有效资本市场理论。<br>
+如果某一变量的运动方式发生变化，那么对该变量预期形成的方式也要随之改变。<br>
+预期的预测误差平均为零，且事先无法预知。</p>
+<p>12.金融市场中的理性预期：</p>
+<p>金融市场的预期等于基于所有可得信息的最优预测</p>
+<p>金融市场中的现价水平应当使得根据所有可得信息对证券回报率所作的最优预测等于证券的均衡回报率<br>
+注意推导过程</p>
+<p>13.套利：市场参与者消除未被利用的盈利机会的过程<br>
+在有效市场中，所有未被利用的盈利机会都会被消除<br>
+并非金融市场的所有投资者都熟悉某一证券的信息或者对其价格有理性的预期，才能使该证券的价格趋向于满足有效市场条件</p>
+<p>14.市场基本面：所有直接影响证券未来收入流的事项</p>
+<p>15.理性泡沫：泡沫指资产价格偏离其基本市场价值的状态</p>
+<p>16.行为金融：借助人类学 社会学特别是心理学解释理解证券价格的行为</p>
+<p>17.卖空 short sales 平仓：covering the short</p>
+<p>18.行为金融学和有效市场假定</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src>
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

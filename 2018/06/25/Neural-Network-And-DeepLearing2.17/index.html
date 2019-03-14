@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Coursera吴恩达《神经网络与深度学习》笔记（2.18）神经网络基础-Jlogistic 损失函数的解释 - Love Letter</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content=" 2.18 （选修）logistic 损失函数的解释（Explanation of logistic regression cost function）
+在前面的视频中，我们已经分析了逻辑回归的损失,"> 
+    <meta name="author" content="salcabar"> 
+    <link rel="alternative" href="atom.xml" title="Love Letter" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">Love Letter</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">Coursera吴恩达《神经网络与深度学习》笔记（2.17）神经网络基础-Jupyter/iPython Notebooks快速入门</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">Coursera吴恩达《神经网络与深度学习》笔记（2.17）神经网络基础-Jupyter/iPython Notebooks快速入门</h1>
+        <div class="stuff">
+            <span>六月 25, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h3><span id="217-jupyteripython-notebooks快速入门quick-tour-of-jupyteripython-notebooks"> 2.17 Jupyter/iPython Notebooks快速入门（Quick tour of Jupyter/iPython Notebooks）</span></h3>
+<hr>
+<p>学到现在，你即将要开始处理你的第一个编程作业。但在那之前，让我快速地给你介绍一下在<strong>Coursera</strong>上的<strong>iPython Notebooks</strong>工具。</p>
+<p><img src="http://ohwcyvzaz.bkt.clouddn.com/ad2f424687e9a89e7874a32d65e4f0b8.png" alt></p>
+<p>这就是<strong>Jupyter iPython Notebooks</strong>的界面，你可以通过它连接到<strong>Coursera</strong>。让我快速地讲解下它的一些特性。关于它的说明已经被写入这个<strong>Notebook</strong>中。</p>
+<p><img src="http://ohwcyvzaz.bkt.clouddn.com/bf2ad2256d9b9180f44120571c0415f5.png" alt></p>
+<p>这里有一些空白区域的代码块，你可以在这里编写代码。有时，你也会看到一些函数块。而关于这些的说明都已经在<strong>iPython Notebook</strong>的文本中。在<strong>iPython Notebook</strong>中，在这些较长的灰色的区域就是代码块。</p>
+<p><img src="http://ohwcyvzaz.bkt.clouddn.com/c0a121b42faa4cd0ca2d3f2fc6215428.png" alt></p>
+<p>有时，你会看到代码块中有像这样的开始代码和结束代码。在进行编程练习时，请确保你的代码写在开始代码和结束代码之间。</p>
+<p><img src="http://ohwcyvzaz.bkt.clouddn.com/067c3d492df18e2ef262857eff04f4b1.png" alt></p>
+<p>比如，编写打印输出<strong>Hello World</strong>的代码，然后执行这一代码块（你可以按shift +enter来执行这一代码块）。最终，它就会输出我们想要的<strong>Hello World</strong>。</p>
+<p><img src="http://ohwcyvzaz.bkt.clouddn.com/c328b10a036e525eebdf7b25e307b967.png" alt></p>
+<p>在运行一个单元格<strong>cell</strong>时，你也可以选择运行其中的一块代码区域。通过点击<strong>Cell</strong>菜单的<strong>Run Cells</strong>执行这部分代码。</p>
+<p>也许，在你的计算机上，运行<strong>cell</strong>的键盘快捷方式可能并非是<strong>shift enter</strong>。但是，Mac应该和我的个人电脑一样，可以使用<strong>shift + enter</strong>来运行<strong>cell</strong>。</p>
+<p><img src="http://ohwcyvzaz.bkt.clouddn.com/777048a0bae0db1cb0af3070a2a36aa4.png" alt></p>
+<p>当你正在阅读指南时，如果不小心双击了它，点中的区域就会变成<strong>markdown</strong>语言形式。如果你不小心使其变成了这样的文本框，只要运行下单元格<strong>cell</strong>，就可以回到原来的形式。所以，点击<strong>cell</strong>菜单的<strong>Run Cells</strong>或者使用<strong>shift + enter</strong>，就可以使得它变回原样。</p>
+<p><img src="http://ohwcyvzaz.bkt.clouddn.com/e218670e323ffef8c7f182184ae133a3.png" alt></p>
+<p>这里还有一些其他的小技巧。比如当你执行上面所使用的代码时，它实际上会使用一个内核在服务器上运行这段代码。如果你正在运行超负荷的进程，或者电脑运行了很长一段时间，或者在运行中出了错，又或者网络连接失败，这里依然有机会让<strong>Kernel</strong>重新工作。你只要点击<strong>Kernel</strong>，选择<strong>Restart</strong>，它会重新运行<strong>Kernel</strong>使程序继续工作。</p>
+<p>所以，如果你只是运行相对较小的工作并且才刚刚启动你的<strong>ipad</strong>或笔记本电脑，这种情况应该是不会发生的。但是，如果你看见错误信息，比如<strong>Kernel</strong>已经中断或者其他信息,你可以试着重启<strong>Kernel</strong>。</p>
+<p><img src="http://ohwcyvzaz.bkt.clouddn.com/97a410e8ab2e386e2f617b00b5c60dfe.png" alt></p>
+<p>当我使用<strong>iPython Notebook</strong>时会有多个代码区域块。尽管我并没有在前面的代码块中添加自己的代码，但还是要确保先执行这块代码。因为在这个例子，它导入了<strong>numpy</strong>包并另命名为<strong>np</strong>等，并声明了一些你可能需要的变量。为了能顺利地执行下面的代码，就必须确保先执行上面的代码，即使不要求你去写其他的代码。</p>
+<p><img src="http://ohwcyvzaz.bkt.clouddn.com/8764cd16b111b5601a5bbb95ed600fe5.png" alt></p>
+<p>最后，当你完成作业后，可以通过点击右上方蓝色的<strong>Submit Assignment</strong>按钮提交你的作业。</p>
+<p>我发现这种交互式的<strong>shell</strong>命令，在<strong>iPython Notebooks</strong>是非常有用的，能使你快速地实现代码并且查看输出结果，便于学习。所以我希望这些练习和<strong>Jupyter iPython Notebooks</strong>会帮助你更快地学习和实践，并且帮助你了解如何去实现这些学习算法。后面一个视频是一个选学视频，它主要是讲解逻辑回归中的代价函数。你可以选择是否观看。不管怎样，都祝愿你能通过这两次编程作业。我会在新一周的课程里等待着你。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src>
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html lang class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Coursera吴恩达《神经网络与深度学习》笔记（2.18）神经网络基础-Jlogistic 损失函数的解释 - Love Letter</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content=" 2.18 （选修）logistic 损失函数的解释（Explanation of logistic regression cost function）
+在前面的视频中，我们已经分析了逻辑回归的损失,"> 
+    <meta name="author" content="salcabar"> 
+    <link rel="alternative" href="atom.xml" title="Love Letter" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">Love Letter</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">2018读书笔记——货币金融学（弗雷德里克.S.米什金）(二)</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">2018读书笔记——货币金融学（弗雷德里克.S.米什金）(二)</h1>
+        <div class="stuff">
+            <span>六月 15, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/金融/">金融</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>货币金融学的第二篇主要讲了金融市场的相关内容，其中第4章讲了如何理解利率，第5章讲了利率行为，第6章讲了利率的风险结构与期限结构，第7章讲了股票市场、理性预期理论与有效市场假说。</p>
+<h2><span id="第4章-理解利率"> 第4章 理解利率</span></h2>
+<p>在这一章，我们需要能够计算未来现金流量的现值，以及四种信用市场工具的到期收益率</p>
+<blockquote>
+<p>如何计算固定支付贷款的利率以及如何计算息票息券的贷款？</p>
+</blockquote>
+<blockquote>
+<p>同时需要区分到期收益率、当期收益率、回报率与资本所得率，更需要区分实际利率与名义利率</p>
+</blockquote>
+<h3><span id="需要掌握的相关概念"> 需要掌握的相关概念</span></h3>
+<ol>
+<li>
+<p>现金流：对现金的偿付</p>
+</li>
+<li>
+<p>对未来的贴现：计算未来收入在今天的价值</p>
+</li>
+<li>
+<p>PV=CF/(1+i)^n</p>
+</li>
+<li>
+<p>固定支付贷款（分期偿还贷款）贷款人向借款人提供一定数量的资金，在约定的若干年内，借款人每个期间偿还固定的金额，其中既包括本金，也包括利息。</p>
+</li>
+<li>
+<p>息票息券：在到期日之前每年向债券持有人支付固定金额的利息，到期时再偿还事先规定的最终金额</p>
+</li>
+<li>
+<p>贴现发行债券又称零息债券：购买值低于其面值，到期时按照面值偿付</p>
+</li>
+<li>
+<p>到期收益率：指债务工具所有未来回报的现值与今天的价值相等的利率</p>
+</li>
+<li>
+<p>债券现价与利率是负向相关的，当利率上升时，债券价格下跌，反之亦然。</p>
+</li>
+<li>
+<p>回报：衡量一个人在一个特定时间段持有某种债券或其他有价证券所获得的收益的指标</p>
+</li>
+<li>
+<p>回报率：持有人的利息收入与有价证券价值变动的总和占购买价格的比率<br>
+注意：债券的回报率不一定等于债券的到期收益率</p>
+</li>
+<li>
+<p>资本利得率：债券价格相对于最初购买价格的变动：</p>
+</li>
+<li>
+<p>名义利率和实际利率，其中实际利率考虑到了通货膨胀的因素</p>
+</li>
+<li>
+<p>费雪方程式<br>
+名义利率i等于实际利率r加上预期通货膨胀率π</p>
+</li>
+<li>
+<p>此章节需要注意各种公式与计算，需要勤加练习。</p>
+</li>
+</ol>
+<h2><span id="第5章-利率行为"> 第5章 利率行为</span></h2>
+<blockquote>
+<p>学习完本章，应该明确资产需求的影响因素</p>
+</blockquote>
+<blockquote>
+<p>绘制债券市场的供给曲线和需求曲线，同时确定均衡利率水平</p>
+</blockquote>
+<blockquote>
+<p>列举和描述影响债券市场均衡利率的因素</p>
+</blockquote>
+<blockquote>
+<p>利用流动性偏好理论说明债券市场和货币市场之间的联系</p>
+</blockquote>
+<blockquote>
+<p>列举和描述影响货币市场均衡利率的因素</p>
+</blockquote>
+<blockquote>
+<p>了解货币供给增长率对利率变动的影响机制，并画图说明</p>
+</blockquote>
+<h3><span id="需要掌握的概念"> 需要掌握的概念</span></h3>
+<ol>
+<li>
+<p>财富：个人拥有的全部资源，包括所有资产</p>
+</li>
+<li>
+<p>预期回报率：预期下个阶段的回报率</p>
+</li>
+<li>
+<p>资产需求的决定因素：</p>
+<ol>
+<li>
+<p>财富：假定其他因素不变，财富的增长会增加对资产的需求数量</p>
+</li>
+<li>
+<p>预期回报率：在其他因素不变的情况下，某一资产相对于其他替代性资产的预期回报率上升会增加对该资产的需求数量</p>
+</li>
+<li>
+<p>风险：嘉定其他因素不变，一种资产相对于其他替代性资产的风险更大，则该资产的需求数量会相应减少</p>
+</li>
+<li>
+<p>流动性：一种资产相对于其他资产的流动性越强，需求就越多</p>
+<p>需求曲线（demand curve)</p>
+<p>其他经济量不变（ceteris paribus)</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>债券市场的供给与需求：</p>
+<ol>
+<li>
+<p>需求曲线的推导（记住图）课本p78 图5-1<br>
+供给曲线的推导</p>
+</li>
+<li>
+<p>市场均衡：人们愿意购买（需求）的数量与人们愿意出售（供给）的数量相等时，就实现了市场均衡（market equilibrium)</p>
+</li>
+<li>
+<p>均衡价格和市场出清价格相同<br>
+均衡利率也就是市场出清利率</p>
+</li>
+<li>
+<p>回忆：债券价格总是与其利率负向相关</p>
+</li>
+<li>
+<p>需求曲线的位移：</p>
+<p>在经济周期的扩张阶段，随着财富的增长，债券需求量相应增加，需求曲线向右位移。在经济周期的衰退阶段，随着收入和财富的减少，债券需求量相应萎缩，需求曲线向左位移。</p>
+<p>（储蓄增加，财富增长会导致需求曲线向右位移，如果储蓄减少，财富减少，债券需求会减少，需求曲线向左位移）</p>
+<p>对未来利率较高的预期会降低长期债权的预期回报率，减少债券需求，引起需求曲线向左位移</p>
+<p>对未来利率较低的语气会增加对长期债券的需求，导致需求曲线向右位移</p>
+<p>其他替代性资产预期回报率的上升会减少对债券的需求，导致需求曲线向左位移</p>
+<p>预期通货膨胀率的升上降低了债券的预期回报率，导致债券需求下降，债券需求曲线向左位移</p>
+<p>债券风险上升会导致对债券的需求下降，需求曲线向左移</p>
+<p>其他资替代性产风险上升会导致对债券的需求上升，需求曲线向右移</p>
+<p>更多人参与债券市场的交易，会导致出售债券更加容易，债券流动性增强导致每一利率水平的债券需求量上升，需求曲线向右移</p>
+<p>其他替代性资产流动性的增强减少了对债券的需求，需求曲线向左移。</p>
+</li>
+<li>
+<p>供给曲线的位移：</p>
+<p>各种投资的预期盈利性越强，越愿意通过借款为这些投资筹集资金。当经济体处于经济周期的扩张阶段，增长十分迅速，对于给定债券价格的债券供给量就会上升。因此，在经济周期的扩张阶段，债券供给就会增加，供给曲线向右位移，同时在经济周期的衰退阶段，经济体缺乏盈利性较强的投资机会，债券供给就会下降，推动债券供给曲线向左位移。</p>
+<p>预期通货膨胀率上升，借款真实成本会下降，对应于债券价格水平的债券供给数量会相应增加。预期通货膨胀率上升会增加债券供给，推动债券供给曲线向左位移。</p>
+<p>政府预算赤字加大，债券供给量加大，推动供给曲线向右位移。</p>
+</li>
+<li>
+<p>费雪效应：</p>
+<p>预期通货膨胀率的上升会引起利率的上升。这个结论被命名为费雪效应。要注意费雪效应的推导过程</p>
+<p>同时，很多经济学家认为，如果要达到降低利率的目的，就应当将通货膨胀率控制在较低的水平上</p>
+</li>
+<li>
+<p>经济周期变化所引起的利率变化</p>
+</li>
+<li>
+<p>日本低利率或者是负利率的原因</p>
+</li>
+<li>
+<p>流动性偏好理论：均衡利率的变动</p>
+<p>分析货币需求曲线和货币供给曲线的位移（脑中有图）</p>
+<p>约翰梅纳德凯恩斯开创了流动性偏好理论。用货币的供给与需求说明均衡利率的决定。假设人们用来储存财富的资产只有两类，货币和债券，经济体财富总量就应该等于货币总量与债券总量之和。等于债券供给量加货币供给量。人们不可能超越他们所能利用的资源购买更多的资产，所以债券需求量与货币需求量应等于经济体的财富总量。结论是，债券与货币的供给量等于债券与货币的需求量。</p>
+<p>所以，如果货币市场处于均衡，债券市场应同样处于均衡。</p>
+</li>
+<li>
+<p>机会成本：理解货币需求与利率之间的负相关关系，机会成本是指由于没有持有替代性资产，而丧失的利息收入。随着债券利率i的上升，持有货币的机会成本增加，于是货币的吸引力下降，货币需求减少。</p>
+</li>
+<li>
+<p>均衡利率的变化</p>
+<p>货币需求曲线的位移：收入与价格会引起货币需求曲线位移</p>
+<p>收入水平上升导致对货币的需求增加，货币需求曲线右移。</p>
+<p>物价水平上升，人们同等货币能购买的商品和服务就减少，需要货币就更多，货币需求曲线就会右移。</p>
+<p>货币供给曲线的位移：货币供给增加，货币供给曲线（直线）右移，利率就会下降</p>
+<p>在经济扩张阶段，假定其他经济变量不变，利率随着收入的增加而上.假定其他经济变量不变，利率会随着价格水平的上升而上升.货币供给量增加，利率会随着货币供给的增加而下降<br>
+（弗里德曼的质疑）</p>
+<p>货币供给量增加，利率会随着货币供给量增加而上升（收入效应）</p>
+<p>货币供给量增加，价格水平会随着货币供给量的增加而上升，于是利率随着价格水平的上升而上升（价格效应）</p>
+<p>货币供给量增加的通货膨胀预期效应是指利率随着预期通货膨胀的上升而上升（通货膨胀效应）</p>
+</li>
+</ol>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src>
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

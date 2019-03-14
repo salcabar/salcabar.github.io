@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Coursera吴恩达《神经网络与深度学习》笔记（2.18）神经网络基础-Jlogistic 损失函数的解释 - Love Letter</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content=" 2.18 （选修）logistic 损失函数的解释（Explanation of logistic regression cost function）
+在前面的视频中，我们已经分析了逻辑回归的损失,"> 
+    <meta name="author" content="salcabar"> 
+    <link rel="alternative" href="atom.xml" title="Love Letter" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">Love Letter</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">Centos 编译 Chromium</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">Centos 编译 Chromium</h1>
+        <div class="stuff">
+            <span>六月 20, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/工具/">工具</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p><ul class="markdownIt-TOC">
+<li><a href="#%E5%89%8D%E7%BD%AE%E5%87%86%E5%A4%87">前置准备</a></li>
+<li><a href="#install-depot_tools">Install depot_tools</a></li>
+<li><a href="#get-the-code">Get the code</a></li>
+<li><a href="#setting-up-the-build">Setting up the build</a></li>
+<li><a href="#faq">faq</a></li>
+</ul>
+</p>
+<blockquote>
+<p>首先服务器要先能翻墙</p>
+</blockquote>
+<blockquote>
+<p>Centos 7.0+</p>
+</blockquote>
+<h2><span id="前置准备"> 前置准备</span></h2>
+<p>安装 <code>git</code></p>
+<p><a href="https://chromium.googlesource.com/chromium/src/+/master/docs/linux_build_instructions.md" target="_blank" rel="noopener">官方编译说明</a></p>
+<h2><span id="install-depot_tools"> Install depot_tools</span></h2>
+<p><code>depot_tools</code> 是专门用来编译 <code>chromium</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /data</span><br><span class="line"></span><br><span class="line">git <span class="built_in">clone</span> https://chromium.googlesource.com/chromium/tools/depot_tools.git</span><br></pre></td></tr></table></figure>
+<p>下载下来之后，可以看到里面有很多工具</p>
+<p>设置工具路径</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="string">"<span class="variable">$PATH</span>:/data/depot_tools"</span></span><br></pre></td></tr></table></figure>
+<h2><span id="get-the-code"> Get the code</span></h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/chromium &amp;&amp; <span class="built_in">cd</span> ~/chromium</span><br></pre></td></tr></table></figure>
+<p>使用<code>fetch</code> 工具，如果提示没有 fetch，那肯定是上面路径设置问题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fetch --no-history chromium</span><br></pre></td></tr></table></figure>
+<p><code>--no-history</code> 参数是不需要历史版本，我只需要最新版就好</p>
+<p>下载之后会创建 <code>src</code> 目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> src</span><br></pre></td></tr></table></figure>
+<p>linux 版本众多，每个不同的系统，需要的依赖不一样</p>
+<p>Centos 的需要安装一下依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">yum install git python bzip2 tar pkgconfig atk-devel alsa-lib-devel \</span><br><span class="line">bison binutils brlapi-devel bluez-libs-devel bzip2-devel cairo-devel \</span><br><span class="line">cups-devel dbus-devel dbus-glib-devel expat-devel fontconfig-devel \</span><br><span class="line">freetype-devel gcc-c++ glib2-devel glibc.i686 gperf glib2-devel gtk2-devel \</span><br><span class="line">gtk3-devel java-1.*.0-openjdk-devel libatomic libcap-devel libffi-devel \</span><br><span class="line">libgcc.i686 libgnome-keyring-devel libjpeg-devel libstdc++.i686 libX11-devel \</span><br><span class="line">libXScrnSaver-devel libXtst-devel libxkbcommon-x11-devel ncurses-compat-libs \</span><br><span class="line">nspr-devel nss-devel pam-devel pango-devel pciutils-devel \</span><br><span class="line">pulseaudio-libs-devel zlib.i686 httpd mod_ssl php php-cli python-psutil wdiff \</span><br><span class="line">xorg-x11-server-Xvfb</span><br></pre></td></tr></table></figure>
+<p>其他版本的可以自己根据官方文档去下载</p>
+<p>然后再执行 runhooks 明命令，也是下载一堆依赖</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gclient runhooks</span><br></pre></td></tr></table></figure>
+<h2><span id="setting-up-the-build"> Setting up the build</span></h2>
+<blockquote>
+<p>Chromium uses Ninja as its main build tool along with a tool called GN to generate .ninja files</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gn gen out/Default</span><br></pre></td></tr></table></figure>
+<p>成功的会显示</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Done. Made 10155 targets from 1723 files in 2574ms</span><br></pre></td></tr></table></figure>
+<p>然后开始编译, 有快速编译的配置，还没完全弄懂各种参数的含义</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ninja -C out/Default chrome</span><br></pre></td></tr></table></figure>
+<p>编译时间会很长的，慢慢等吧。。</p>
+<h2><span id="faq"> faq</span></h2>
+<p>如果<code>fetch</code> 那步出现问题停止了，可以使用<code>gclient sync</code> 命令同步，如果提示 git 冲突了，找到冲突的，删除干净，重新同步即可</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src>
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

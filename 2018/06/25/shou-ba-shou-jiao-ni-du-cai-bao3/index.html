@@ -1,0 +1,434 @@
+
+<!DOCTYPE html>
+<html lang class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Coursera吴恩达《神经网络与深度学习》笔记（2.18）神经网络基础-Jlogistic 损失函数的解释 - Love Letter</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content=" 2.18 （选修）logistic 损失函数的解释（Explanation of logistic regression cost function）
+在前面的视频中，我们已经分析了逻辑回归的损失,"> 
+    <meta name="author" content="salcabar"> 
+    <link rel="alternative" href="atom.xml" title="Love Letter" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">Love Letter</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">《手把手教你读财报》笔记（三）</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">《手把手教你读财报》笔记（三）</h1>
+        <div class="stuff">
+            <span>六月 25, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/金融/">金融</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p><ul class="markdownIt-TOC">
+<li><a href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-%E7%8E%B0%E9%87%91%E6%B5%81%E9%87%8F%E8%A1%A8">第四章 现金流量表</a>
+<ul>
+<li><a href="#%E4%B8%80-%E7%8E%B0%E9%87%91%E6%B5%81%E9%87%8F%E8%A1%A8%E7%9A%84%E6%8B%86%E8%A7%A3">一、现金流量表的拆解</a></li>
+<li><a href="#%E4%BA%8C-%E4%BC%81%E4%B8%9A%E7%8E%B0%E9%87%91%E6%B5%81%E8%82%96%E5%83%8F%E8%A1%A8%E6%A0%BC%E5%88%97%E5%87%BA%E6%9D%A5%E5%B9%B6%E4%B8%94%E5%88%86%E6%9E%90%E6%98%8E%E7%A1%AE">二、企业现金流肖像（表格列出来并且分析明确）</a></li>
+<li><a href="#%E4%B8%89-%E7%8E%B0%E9%87%91%E6%B5%81%E9%87%8F%E8%A1%A8%E9%80%9F%E8%AF%BB">三、现金流量表速读</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2><span id="第四章-现金流量表"> 第四章 现金流量表</span></h2>
+<blockquote>
+<p>企业的现金流量是成亡的关键。如果没有现金，一天都熬不下去。现金才是实打实的硬通货。</p>
+</blockquote>
+<blockquote>
+<p>现金流量表就是对货币资金科目下的“现金及现金等价物&quot;变化的展开</p>
+</blockquote>
+<h3><span id="一-现金流量表的拆解"> 一、现金流量表的拆解</span></h3>
+<ol>
+<li>
+<p>为何要有现金流量表：现金流量表是负责展示企业现金来龙去脉信息的一张表。投资人主要关注的是合并现金流量报表</p>
+</li>
+<li>
+<p>现金流量表将企业赚钱的过程分解为投资活动和日常经营活动两部分。<br>
+最终就是 投资获得的现金流 筹资活动的现金流和经营活动的现金流</p>
+</li>
+<li>
+<p>经营活动的现金流入/现金流出：</p>
+<ol>
+<li>
+<p>流入：销售商品 提供劳务收到的现金 收到的税费返还 收到的其他与经营活动有关的现金</p>
+</li>
+<li>
+<p>流出：购买商品 接受劳务支付的现金 支付给职工的各项现金 支付的所有税费 支付的其他与经营活动有关的现金</p>
+</li>
+</ol>
+</li>
+<li>
+<p>投资活动的现金流入/流出：</p>
+<ol>
+<li>
+<p>流入：收回投资受到的现金 反映企业出售转让或者到期收回的各项投资收到的现金 取得投资收益的现金 处置固定资产无形资产受到的现金流 卖掉资产减去费用的净额和受灾得到的保险赔偿 处置子公司及其他营业单位收到的现金净额 收到其他与投资活动有关的现金；反映企业除了上述各项以外，收到的其他与投资活动有关的现金流入</p>
+</li>
+<li>
+<p>流出：构建固定资产，无形资产和其他长期资产支付的现金 反映企业购买资产或自建资产支出的现金 但以分期付款方式构建的固定资产 首付算在这里 以后算筹资活动的现金支出 取得子公司及其他营业单位支付的现金净额 收购公司或者业务部门的支付现金，减去所收购公司业务部门的账上现金 支付其他与投资活动有关的现金</p>
+</li>
+</ol>
+</li>
+<li>
+<p>筹资活动的现金流入/流出</p>
+<ol>
+<li>
+<p>流入：吸收投资收到的现金；出售股票的现金收入减去发行费用。取得借款所收到的现金，反映企业借各类长短期借款所收到的现金 发现债券收到的现金 收到其他与筹资活动有关的现金</p>
+</li>
+<li>
+<p>流出：偿还债务支付的现金 反映企业以现金偿还债务的本金 分配股利 利润或者利息支付的现金 支付其他与筹资活动有关的现金</p>
+</li>
+</ol>
+</li>
+<li>
+<p>两种现金流量表</p>
+<p>以利润表 以资产负债表为基础，调整得出经营活动现金流，汇总企业投资和筹资活动的现金流情况，得到完整的现金流量表。</p>
+<p>以利润表为基础：主要是假定利润表上所有收入都不多不少地收到现金，所有支出也同样足额付出现金，这样得出一个现金流量表雏形</p>
+<p>以资产负债表为参照：收入涉及应收票据 应收账款和预收账款科目。</p>
+<p>应收减少或者预收增加，是增加企业现金流入；应收增加或者预收较少，是减少企业现金流入。然后对照应付票据 应付账款 应交税费 应付薪酬预付款等科目调整现金支出假设，得出了经营活动的现金流净额。</p>
+<p>固定资产无形资产存货投资股本长期债务资本公积应付债券等变化被记录为投资活动的现金流净额和筹资活动的现金流净额。</p>
+<p>现金流量表是以利润表和资产负债表为基础推导出来的，是资产负债表的补充说明。</p>
+<p>方法论：不要认为现金流量表是公司现金流水账的汇总，不要用现金流量表去质疑利润表和资产负债表的财务分析。</p>
+</li>
+<li>
+<p>营业收入角度的现金流量表</p>
+<p>利润表上的营业收入不含增值税，现金流量表的营业收入要加上的待收的增值税。</p>
+</li>
+<li>
+<p>净利润角度的现金流量表</p>
+<p>直接法与间接法的计算*</p>
+<p>直接法：销售商品 提供劳务收到的现金开始的编制方法：分析企业经营活动现金流的来源和去处，预测企业现金流的未来前景</p>
+<p>间接法：从净利润倒退的编制方法：便于将净利润与经营活动产生的现金流量净额进行比较，了解净利润与经营活动产生的现金流量存在差异的原因</p>
+</li>
+<li>
+<p>经营活动现金流的关键数字：</p>
+<ol>
+<li>经营活动现金流量净额：为负数的企业日子不好过（银行和控股类公司除外）</li>
+</ol>
+<p>现金净流量等于零，竞争力不断衰减</p>
+<p>现金流量大于零小于折旧摊销，说明企业现金流可以维持当前规模的经营活动，能补偿部分折旧摊销，但企业仍然不具备更新升级能力。</p>
+<p>经营活动现金流量净额大于折旧摊销，才是优秀的企业。</p>
+<p>经营现金流净额/净利润比值持续大于 1 是优秀企业的重要特征</p>
+<p>（水力发电公司除外，因为他们折旧比较高，但是折旧不支出现金）</p>
+<p>（房地产公司也除外，因为卖期房产生大量预收款，收入可以靠交房速度调节，房地产行业要看当期销售和已销售未结算累积量）</p>
+<p>经营活动现金流净额/净利润比值持续小于 1，说明存货大量积压或者是赊销卖货。存货大量积压可以从资产负债表的存货变化</p>
+<p>值找答案，赊销卖货可以看看资产负债表中的应收票据和应收账款。</p>
+<ol start="2">
+<li>销售商品、提供劳务收到的现金</li>
+</ol>
+<p>方法论：这个数字要和营业收入对比，理想数据应该是营业收入的 1.17 倍。或者加上应收票据里的银行承兑汇票后是营业收入的 1.17 倍。但是只要大于 1，就是不错的企业说明销售的大部分款项都收到了。小于 1 说明大量款项变成了应收账款。</p>
+</li>
+<li>
+<p>投资活动现金流及筹资活动现金流</p>
+<ol>
+<li>
+<p>投资活动现金流出主要是投给自己买固定资产或者无形资产，要么就是投给别人买股票或者债券。现金流入无非就是卖家当或者收到股票分红和利息。</p>
+</li>
+<li>
+<p>投资活动的净流量为负数说明企业在花钱扩张，净流量为正表明企业正在收缩，或者扩张速度便缓慢。对内对外投资一般要关注其所投项目能否在企业能力范围内，跨行业的多元化经营会大概率演变成多元恶化。</p>
+</li>
+<li>
+<p>投资回报率如果不是显著高于社会资金回报水平（银行同期贷款利率*2），就是乱来。反之，则是可能对股东有利的投资。</p>
+</li>
+<li>
+<p>企业投资资金来源于自产现金（经营或之前投资的回报），还是筹集的现金。筹资的话，要看投资项目的具体情况。<br>
+投资活动的现金流出主要体现在构建固定资产 无形资产和其他长期资产支付的现金，和取得子公司及其他营业单位支付从现金净额上</p>
+<p>自由现金流：企业经营活动赚来的钱里，去掉为了维持企业盈利能力而必须再投下去的钱。他是股东在不伤及企业获利能力的前提下，可以从企业拿走的回报。</p>
+</li>
+<li>
+<p>筹资活动比较简单，区别一下权益性筹资（发行价能反映市场对企业价值及成长性的估计）和债务性筹资（利率能反映市场对企业信用的评价，可以帮助投资人评价企业的安全性，债务性筹资活动利率越高，企业越危险）。</p>
+<p>租赁分为：经营性租赁和融资性租赁。</p>
+<p>（长期融资租赁合同一签，租金就是负债了）分期购买同样如此。</p>
+<p>课外延伸：如何给企业估值？*</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3><span id="二-企业现金流肖像表格列出来并且分析明确"> 二、企业现金流肖像（表格列出来并且分析明确）</span></h3>
+<p>主要是把经营活动的现金流净额 投资活动的现金流净额和筹资活动的现金流净额组合在一起看。分别得流入和流出代表了企业的什么状况</p>
+<p>分析经营活动现金流为正的企业情况：</p>
+<p>经营活动现金流为正 投资活动现金流出 筹资活动现金流出</p>
+<p>分析经营活动现金流为负的企业情况：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>经现流净额</th>
+<th>投现流净额</th>
+<th>筹现流净额</th>
+<th>企业类型</th>
+<th>关注要点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>+</td>
+<td>+</td>
+<td>+</td>
+<td>妖精型</td>
+<td>计划投资项目情况</td>
+</tr>
+<tr>
+<td>2</td>
+<td>+</td>
+<td>+</td>
+<td>-</td>
+<td>老母鸡型</td>
+<td>低 PE 高股息率</td>
+</tr>
+<tr>
+<td>3</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>蛮牛型</td>
+<td>项目前景资金支持</td>
+</tr>
+<tr>
+<td>4</td>
+<td>+</td>
+<td>-</td>
+<td>-</td>
+<td>奶牛型</td>
+<td>可持续性</td>
+</tr>
+<tr>
+<td>5</td>
+<td>-</td>
+<td>+</td>
+<td>+</td>
+<td>骗吃骗喝</td>
+<td>不建议投资</td>
+</tr>
+<tr>
+<td>6</td>
+<td>—</td>
+<td>+</td>
+<td>—</td>
+<td>混吃等死</td>
+<td>不建议投资</td>
+</tr>
+<tr>
+<td>7</td>
+<td>-</td>
+<td>-</td>
+<td>+</td>
+<td>赌徒</td>
+<td>项目前景管理层品性</td>
+</tr>
+<tr>
+<td>8</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>大出血</td>
+<td>拒绝参与</td>
+</tr>
+</tbody>
+</table>
+<h3><span id="三-现金流量表速读"> 三、现金流量表速读</span></h3>
+<ol>
+<li>
+<p>造假较少，但是也存在</p>
+<ol>
+<li>
+<p>控股股东或管理层期间挪用上市公司现金，报表点归还</p>
+</li>
+<li>
+<p>借用一次性行为美化当期现金流</p>
+</li>
+<li>
+<p>抓住投资者更关注经营活动现金流量净额的特性，将投资活动和筹资活动产生的现金流出化妆成投资和筹资活动现金流出。</p>
+</li>
+</ol>
+</li>
+<li>
+<p>先关注合并现金流量表</p>
+</li>
+<li>
+<p>关注异常现象：</p>
+<ol>
+<li>
+<p>持续的经营活动净额为负数</p>
+</li>
+<li>
+<p>虽然经营活动现金流量表净额为正，主要是因为应付账款和应付票据的增加。应付账款和应付票据的增加意味着企业拖欠供应商货款，是企业资金链断裂前的征兆。</p>
+</li>
+<li>
+<p>经营活动现金流净额远低于净利润，提示投资者需要注意企业利润造假的可能性</p>
+</li>
+<li>
+<p>购买固定资产无形资产的支出储蓄高于经营活动现金流净额，说明企业持续借钱维持投资行为。</p>
+</li>
+<li>
+<p>投资活动现金流入里，大量现金因出售固定资产或其他长期资产而获得的。</p>
+</li>
+<li>
+<p>企业借款收到的现金，远小于归还借款支付的现金。（骗贷）</p>
+</li>
+<li>
+<p>企业为了筹资支付了显然高于正常水平的利息或者中间费用，体现在”分配股利 利润或偿付利息支付的现金“</p>
+</li>
+</ol>
+</li>
+<li>
+<p>通过现金流量表寻找一个优质企业</p>
+<ol>
+<li>
+<p>经营活动产生的净额&gt;净利润&gt;0</p>
+</li>
+<li>
+<p>销售商品 提供劳务收到的现金大于等于营业收入</p>
+</li>
+<li>
+<p>投资活动产生的现金流量净额&lt;0 而且主要是投入新项目而非用于维持原有生产能力</p>
+</li>
+<li>
+<p>现金及现金等价物净增加额&gt;0 可放宽为排除分红因素，该科目&gt;0</p>
+</li>
+<li>
+<p>期末现金及现金等价物余额&gt;有息负债，可放宽为期末现金及现金等价物+应收票据中的银行承兑汇票&gt;有息负债</p>
+</li>
+<li>
+<p>经营活动现金流量与净利润对比</p>
+</li>
+<li>
+<p>销售商品提供劳务收到的现金与营业收入对比</p>
+</li>
+<li>
+<p>现金余额 投资支出现金分红和有息负债对比</p>
+</li>
+</ol>
+</li>
+</ol>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src>
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

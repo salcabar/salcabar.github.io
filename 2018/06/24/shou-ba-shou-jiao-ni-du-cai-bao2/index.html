@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html lang class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Coursera吴恩达《神经网络与深度学习》笔记（2.18）神经网络基础-Jlogistic 损失函数的解释 - Love Letter</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content=" 2.18 （选修）logistic 损失函数的解释（Explanation of logistic regression cost function）
+在前面的视频中，我们已经分析了逻辑回归的损失,"> 
+    <meta name="author" content="salcabar"> 
+    <link rel="alternative" href="atom.xml" title="Love Letter" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">Love Letter</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">《手把手教你读财报》笔记（二）</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">《手把手教你读财报》笔记（二）</h1>
+        <div class="stuff">
+            <span>六月 24, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/金融/">金融</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p><ul class="markdownIt-TOC">
+<li><a href="#%E7%AC%AC%E4%B8%89%E7%AB%A0-%E8%B5%84%E6%9C%AC%E5%B8%82%E5%9C%BA%E8%BF%BD%E6%8D%A7%E7%9A%84%E8%A1%A8%E5%88%A9%E6%B6%A6%E8%A1%A8">第三章 资本市场追捧的表——利润表</a>
+<ul>
+<li><a href="#%E4%B8%80-%E5%88%A9%E6%B6%A6%E8%A1%A8%E7%9A%84%E9%87%8D%E7%82%B9">一、利润表的重点</a></li>
+<li><a href="#%E4%BA%8C-%E5%87%80%E5%88%A9%E6%B6%A6%E7%9A%84%E4%BA%A7%E7%94%9F%E8%BF%87%E7%A8%8B">二、净利润的产生过程</a></li>
+<li><a href="#%E4%B8%89-%E9%98%85%E8%AF%BB%E5%88%A9%E6%B6%A6%E8%A1%A8">三、阅读利润表</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2><span id="第三章-资本市场追捧的表利润表"> 第三章 资本市场追捧的表——利润表</span></h2>
+<blockquote>
+<p>利润表阅读主要包括三方面内容，首先是利润表的重点，然后是创造利润的过程，最后是速度利润表的方法。</p>
+</blockquote>
+<h3><span id="一-利润表的重点"> 一、利润表的重点</span></h3>
+<p>利润表也就是损益表，上市公司的年报摘要展示的大部分数据都来自于利润表。年度财务报告里也会有一个“会计数据以及财务指标摘录”大部分数据都来自于利润表</p>
+<ol>
+<li>
+<p>股价由市净率（PE)决定，也就是每股价格除以每股收益，投资人非常关心每股收益和市净率。</p>
+</li>
+<li>
+<p>戴维斯双击：追求市盈率和每股收益的双增长的一种投资哲学<br>
+也有戴维斯单击、单杀（只追求一种）</p>
+</li>
+<li>
+<p>稀释每股收益的计算</p>
+</li>
+<li>
+<p>合并利润表与母公司利润表：合并利润表一般抵消了内部交易之后的全部利润的总和</p>
+</li>
+<li>
+<p>母公司利润表表示公司本部当年经营利润和投资收益的总和</p>
+</li>
+<li>
+<p>有时候本部经营活动微亏，是为了利用消费税只对生产企业征收的原则，单设立销售公司，将生产本部产品低价卖给自己控股的销售公司。本部所得减掉成本和税费后持平或者微亏，将利润放到销售公司里，可以合法避税。</p>
+</li>
+<li>
+<p>母公司的投资收益主要是子公司宣布的分红。注意投资收益的核算方法，是成本法还是权益法。</p>
+</li>
+</ol>
+<h3><span id="二-净利润的产生过程"> 二、净利润的产生过程</span></h3>
+<ol>
+<li>
+<p>从营业收入到营业利润的过程</p>
+</li>
+<li>
+<p>从营业利润到净利润的变化</p>
+</li>
+</ol>
+<p>（理解权责发生制，对收入和费用的确定）</p>
+<ol start="3">
+<li>
+<p>理解收付实现制和权责发生制的不同</p>
+</li>
+<li>
+<p>营业总收入：<br>
+利息收入 已赚保费 手续费和佣金收入（只针对金融业务）<br>
+（1）收入主要是由出售商品 提供劳务或 让渡资产使用权<br>
+（2）输入”满足以下条件时确认“可找到对收入的确定原则<br>
+（3）提供劳务服务的企业，要么在项目完成后一次性确认收入和费用，要么采用完工百分比确认收入和费用<br>
+方法论：关注营业成本和主营业务收入的比值。</p>
+</li>
+<li>
+<p>主营业务收入-营业成本=毛利润<br>
+毛利润占主营业务收入的比率就是毛利率，零售业毛利率比较低，珠宝业就很高。毛利率一定要和同行进行比较，特别高的不是业内的强者，就是骗子。</p>
+</li>
+<li>
+<p>分析毛利率为什么变化。要么就是成本下降，要么就是售价上升，观察毛利率变化的趋势。是生产成本减少了还是企业产品服务提价了？研究为什么会变。毛利率是企业利润的很主要的来源之一</p>
+</li>
+<li>
+<p>企业最终利润由毛利率高低 周转率快慢或经营杠杆的大小所决定。代表着产品竞争力的强弱，管理层运营能力的高低以及企业承担的风险大小。茅台模式 注意产品口碑和替代品。沃尔玛模式要注意管理层的变动。和银行模式要注意宏观上资金的松紧。</p>
+</li>
+<li>
+<p>主营业务的分类：行业越多，分类越多。<br>
+方法论：看到主营业务涉猎特别广的公司，先对其价值打个折。<br>
+企业多行业发展说明原行业机会难找。企业管理层也容易信心爆棚导致多元化变成多元恶化。<br>
+五大客户营收反映了公司对大客户的依赖程度。</p>
+</li>
+<li>
+<p>营业总成本：该期内为取得收入而发生的成本和费用，也就是配比原则。——在确定利润的特定期间，销售收入要与其对应的成本和费用相互配比<br>
+营业总成本包括：营业成本 营业税金以及附加、营业费用（销售费用管理费用财务费用）、资产减值损失。</p>
+</li>
+<li>
+<p>营业成本：期内销售产品的存货价值</p>
+</li>
+<li>
+<p>营业税金及附加：营业过程中无论是否盈利都需要缴纳的税费，包括营业税 消费税 城市维护建设税 资源税 教育费附加以及其他的收费。<br>
+可从财报附注中找到</p>
+</li>
+<li>
+<p>主要税种：消费税 增值税 营业税 城市维护建设税 企业所得税 城市教育费用附加 地方教育费附加 价格调节基金等</p>
+</li>
+<li>
+<p>营业费用：主要就是销售费用管理费用和财务费用<br>
+（1）销售费用：广告促销保险运输装卸销售人员的工资福利等以及销售机构的固定资产折旧等费用<br>
+（2）管理费用：管理总工资福利工会经费职工教育行政开支董事会经费中介机构费用无形资产摊销等（垃圾筐）<br>
+销售费用和管理费用的变化趋势应该和营业收入的变化趋势一致。<br>
+找出费用突然增长的原因<br>
+（3）财务费用：自有资金利息收入 债务的利息支出 在银行等金融机构办业务支出的手续费</p>
+</li>
+<li>
+<p>资产减值损失:计提资产减值损失。股权无形资产固定资产商誉存货坏账和可供出售金融资产持有至到期投资都可能产生类似情况，表现了管理层承认之前的投资或者经营决策失误<br>
+方法论：注意 不提或者少提，多提，减少当期利润，以后转回增加后期财报利润。一次性计提减值损失降低资产账面值，减少后期折旧和摊销，增加后期财报利润。<br>
+注意：如果这个科目很大，不管是正的还是负的数字，都需要投资者提高警惕</p>
+</li>
+<li>
+<p>其他收益：营业总收入-营业总成本+三块单独汇报损益（公允价值变动收益 投资收益和汇兑收益)=营业利润</p>
+</li>
+<li>
+<p>营业利润：营业利润率=营业利润/营业总收入<br>
+他的提高表示了企业的竞争力在不断提高</p>
+</li>
+<li>
+<p>净利润：营业利润+营业外收支净额-所得税=净利润<br>
+营业外收入过大，需要仔细思考。<br>
+可按照营业利润的 75%来看待当年净利润，去掉营业外收入对利润的影响<br>
+如果企业的利润大量来源于营业外收支，说明他在打扮自己的报表</p>
+</li>
+<li>
+<p>营业利润+营业外收支净额=利润总额<br>
+经营现金流净额除以净利润=看是否大于一。是的话说明是个下金蛋的母鸡</p>
+</li>
+</ol>
+<h3><span id="三-阅读利润表"> 三、阅读利润表</span></h3>
+<blockquote>
+<p>主要看四个指标：营业收入 毛利率 费用了和营业利润率。</p>
+</blockquote>
+<ol>
+<li>
+<p>营业收入展示企业经营状况的发展趋势。（潜在需求增长，市场份额扩大以-评估竞争对手的受损和回击情况、价格提升-分析产品的可替代情况）<br>
+要研究营业收入的增速是否高于行业平均水平。<br>
+佛龛市场和利基市场：细分市场有限，容不下很多竞争对手。关注企业经营现金去了哪里 *持续增持很难</p>
+</li>
+<li>
+<p>毛利率：营业收入-营业成本=毛利润 毛利润/营业收入就是毛利率<br>
+企业要做的更好，保持良好的独特竞争性，毛利率才会越来越高。<br>
+寻找毛利率高的企业。<br>
+大于 40%最好</p>
+</li>
+<li>
+<p>费用率：销售费用 财务费用和管理费用。他们占营业总收入的比值叫做费用率。<br>
+有促销才能提升销售额的猫腻<br>
+管理费用：保持增长比例等于或者小于营业收入增长。<br>
+费用占毛利润的比例小于 30%是比较好的企业。<br>
+排除净利润率地下企业 *凯利公式的学习</p>
+</li>
+<li>
+<p>营业利润率：营业利润除以营业收入（最重要的指标）<br>
+看大小，和历史对比。为什么上升？售价提升还是费用降低？<br>
+然后要思考提价会不会影响市场份额？<br>
+竞争对手是否可以采用同样行动？</p>
+</li>
+<li>
+<p>确认净利润是否变成现金回到公司账户：用现金流量表的经营现金流净额除以利润表的净利润，比值越大越好。</p>
+</li>
+</ol>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src>
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

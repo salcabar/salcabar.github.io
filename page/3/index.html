@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Coursera吴恩达《神经网络与深度学习》笔记（2.18）神经网络基础-Jlogistic 损失函数的解释 - Love Letter</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content=" 2.18 （选修）logistic 损失函数的解释（Explanation of logistic regression cost function）
+在前面的视频中，我们已经分析了逻辑回归的损失,"> 
+    <meta name="author" content="salcabar"> 
+    <link rel="alternative" href="atom.xml" title="Love Letter" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">Love Letter</span>
+    <div id="loader"></div>
+    <div class="nav">
+    <ul id="menu-menu" class="menu">
+        
+        <li class="pview menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/whoami/" title="Whoami" target="_blank" rel="noopener">Whoami</a>
+        </li>
+        
+        <li class="  menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="https://github.com/Fechin" title="Github" target="_blank" rel="noopener">Github</a>
+        </li>
+        
+        <li class="  menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="https://twitter.com/FechinLi" title="Twitter" target="_blank" rel="noopener">Twitter</a>
+        </li>
+        
+    </ul>
+    <p id="copyright">
+        &copy; 2019 salcabar.
+        Powered by <a href="http://hexo.io/" title="Hexo" target="_blank" rel="noopener">Hexo</a>
+        Theme <a href="https://github.com/Fechin/hexo-theme-diaspora" title="Diaspora" target="_blank" rel="noopener">Diaspora</a>
+        by Fechin
+    </p>
+</div>
+
+<div id="container">
+    
+<div id="screen">
+    <div id="mark">
+        <div class="layer" data-depth="0.4">
+            <img src="http://s.aliyagrace.com/wallls.com_132767.jpg" id="cover" crossorigin="anonymous" width="1920" height="1080">
+        </div>
+    </div>
+    <div id="vibrant">
+        <svg viewbox="0 0 2880 1620" height="100%" preserveaspectratio="xMaxYMax slice">
+            <polygon opacity="0.7" points="2000,1620 0,1620 0,0 600,0 "/>
+        </svg>
+        <div></div>
+    </div>
+    <div id="header">
+        <div>
+            <a class="image-logo" href="/"></a>
+            <div class="icon-menu switchmenu"></div>
+        </div>
+    </div>
+    
+    <div id="post0">
+        <p>六月 26, 2018</p>
+        <h2><a href="/2018/06/26/Neural-Network-And-DeepLearing2.18/" title="Coursera吴恩达《神经网络与深度学习》笔记（2.18）神经网络基础-Jlogistic 损失函数的解释" class="posttitle">Coursera吴恩达《神经网络与深度学习》笔记（2.18）神经网络基础-Jlogistic 损失函数的解释</a></h2>
+        <p class="summary"> 2.18 （选修）logistic 损失函数的解释（Explanation of logistic regres...</p>
+    </div>
+    
+</div>
+
+    <div id="primary">
+        
+<div class="post">
+    <a href="/2018/06/13/Neural-Network-And-DeepLearing2.5/" title="Coursera吴恩达《神经网络与深度学习》笔记（2.5）神经网络基础-导数">
+        <img src="http://s.aliyagrace.com/wallls.com_112456.jpg" class="cover" width="680" height="440">
+    </a>
+    <div class="else">
+        <p>六月 13, 2018</p>
+        <h3><a href="/2018/06/13/Neural-Network-And-DeepLearing2.5/" title="Coursera吴恩达《神经网络与深度学习》笔记（2.5）神经网络基础-导数" class="posttitle">Coursera吴恩达《神经网络与深度学习》笔记（2.5）神经网络基础-导数</a></h3>
+        <p> 2.5 导数（Derivatives）
+
+这个视频我主要是想帮你获得对微积分和导数直观的理解。或许你认为自从大学毕以后你再也没有接触微积分。这取决于你什...</p>
+    </div>
+</div>
+
+
+<div class="post">
+    <a href="/2018/06/13/markdown-Syntax/" title="markdown语法简要">
+        <img src="http://s.aliyagrace.com/wallhaven-500970.jpg" class="cover" width="680" height="440">
+    </a>
+    <div class="else">
+        <p>六月 13, 2018</p>
+        <h3><a href="/2018/06/13/markdown-Syntax/" title="markdown语法简要" class="posttitle">markdown语法简要</a></h3>
+        <p>Markdown 是一种方便记忆、书写的纯文本标记语言，用户可以使用这些标记符号以最小的输入代价生成极富表现力的文档：譬如您正在阅读的这份文档。
+ 1. ...</p>
+    </div>
+</div>
+
+
+<div class="post">
+    <a href="/2018/06/13/The-Economics-of-Money1/" title="2018读书笔记——货币金融学（弗雷德里克.S.米什金）(一)">
+        <img src="http://s.aliyagrace.com/wallls.com_123402.jpg" class="cover" width="680" height="440">
+    </a>
+    <div class="else">
+        <p>六月 13, 2018</p>
+        <h3><a href="/2018/06/13/The-Economics-of-Money1/" title="2018读书笔记——货币金融学（弗雷德里克.S.米什金）(一)" class="posttitle">2018读书笔记——货币金融学（弗雷德里克.S.米什金）(一)</a></h3>
+        <p>米什金的货币金融学主要讲了6大篇，共分为25章节.
+其中六大篇主要为：
+
+
+引言
+
+
+金融市场
+
+
+金融机构
+
+
+中央银行与货币政策的实施
+
+
+国际金融与...</p>
+    </div>
+</div>
+
+
+<div class="post">
+    <a href="/2018/06/12/iterm2-use-rz-sz/" title="iTerm2使用rz、sz远程上传或下载文件">
+        <img src="http://s.aliyagrace.com/wallhaven-653598.png" class="cover" width="680" height="440">
+    </a>
+    <div class="else">
+        <p>六月 12, 2018</p>
+        <h3><a href="/2018/06/12/iterm2-use-rz-sz/" title="iTerm2使用rz、sz远程上传或下载文件" class="posttitle">iTerm2使用rz、sz远程上传或下载文件</a></h3>
+        <p>首先先安装 iTerm2 和 homebrew
+然后安装 lrzsz
+1brew install lrzsz
+下载 iterm2-zmodem
+githu...</p>
+    </div>
+</div>
+
+
+<div class="post">
+    <a href="/2018/06/12/Neural-Network-And-DeepLearing2.4/" title="Coursera吴恩达《神经网络与深度学习》笔记（2.4）神经网络基础-梯度下降法">
+        <img src="http://s.aliyagrace.com/wallls.com_89198.jpg" class="cover" width="680" height="440">
+    </a>
+    <div class="else">
+        <p>六月 12, 2018</p>
+        <h3><a href="/2018/06/12/Neural-Network-And-DeepLearing2.4/" title="Coursera吴恩达《神经网络与深度学习》笔记（2.4）神经网络基础-梯度下降法" class="posttitle">Coursera吴恩达《神经网络与深度学习》笔记（2.4）神经网络基础-梯度下降法</a></h3>
+        <p> 2.4 梯度下降法（Gradient Descent）
+
+梯度下降法可以做什么？
+在你测试集上，通过最小化代价函数（成本函数）J(w,b)J(w,b)J...</p>
+    </div>
+</div>
+
+
+<div class="post">
+    <a href="/2018/06/11/Neural-Network-And-DeepLearing2.3/" title="Coursera吴恩达《神经网络与深度学习》笔记（2.3）神经网络基础-逻辑回归的代价函数">
+        <img src="http://s.aliyagrace.com/wallhaven-540080.jpg" class="cover" width="680" height="440">
+    </a>
+    <div class="else">
+        <p>六月 11, 2018</p>
+        <h3><a href="/2018/06/11/Neural-Network-And-DeepLearing2.3/" title="Coursera吴恩达《神经网络与深度学习》笔记（2.3）神经网络基础-逻辑回归的代价函数" class="posttitle">Coursera吴恩达《神经网络与深度学习》笔记（2.3）神经网络基础-逻辑回归的代价函数</a></h3>
+        <p> 2.3 逻辑回归的代价函数（Logistic Regression Cost Function）
+
+在上个视频中，我们讲了逻辑回归模型，这个视频里，我们...</p>
+    </div>
+</div>
+
+
+<div class="post">
+    <a href="/2018/06/10/Neural-Network-And-DeepLearing2.2/" title="Coursera吴恩达《神经网络与深度学习》笔记（2.2）神经网络基础-逻辑回归">
+        <img src="http://s.aliyagrace.com/wallhaven-62552.jpg" class="cover" width="680" height="440">
+    </a>
+    <div class="else">
+        <p>六月 10, 2018</p>
+        <h3><a href="/2018/06/10/Neural-Network-And-DeepLearing2.2/" title="Coursera吴恩达《神经网络与深度学习》笔记（2.2）神经网络基础-逻辑回归" class="posttitle">Coursera吴恩达《神经网络与深度学习》笔记（2.2）神经网络基础-逻辑回归</a></h3>
+        <p> 2.2 逻辑回归(Logistic Regression)
+
+在这个视频中，我们会重温逻辑回归学习算法，该算法适用于二分类问题，本节将主要介绍逻辑回归的...</p>
+    </div>
+</div>
+
+
+<div class="post">
+    <a href="/2018/06/09/Neural-Network-And-DeepLearing2.1/" title="Coursera吴恩达《神经网络与深度学习》笔记（2.1）神经网络基础-二分类">
+        <img src="http://s.aliyagrace.com/wallls.com_155011.jpg" class="cover" width="680" height="440">
+    </a>
+    <div class="else">
+        <p>六月 09, 2018</p>
+        <h3><a href="/2018/06/09/Neural-Network-And-DeepLearing2.1/" title="Coursera吴恩达《神经网络与深度学习》笔记（2.1）神经网络基础-二分类" class="posttitle">Coursera吴恩达《神经网络与深度学习》笔记（2.1）神经网络基础-二分类</a></h3>
+        <p> 2.1 二分类(Binary Classification)
+
+这周我们将学习神经网络的基础知识，其中需要注意的是，当实现一个神经网络的时候，我们需要知...</p>
+    </div>
+</div>
+
+
+<div class="post">
+    <a href="/2018/06/08/hello-world/" title="Hello World">
+        <img src="http://7xkipg.com1.z0.glb.clouddn.com/744908.jpg" class="cover" width="680" height="440">
+    </a>
+    <div class="else">
+        <p>六月 08, 2018</p>
+        <h3><a href="/2018/06/08/hello-world/" title="Hello World" class="posttitle">Hello World</a></h3>
+        <p>山有木兮木有枝，心悅君兮君不知
+</p>
+    </div>
+</div>
+
+
+    </div>
+    
+</div>
+<div id="preview"></div>
+
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

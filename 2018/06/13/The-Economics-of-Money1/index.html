@@ -1,0 +1,451 @@
+
+<!DOCTYPE html>
+<html lang class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Coursera吴恩达《神经网络与深度学习》笔记（2.18）神经网络基础-Jlogistic 损失函数的解释 - Love Letter</title>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content=" 2.18 （选修）logistic 损失函数的解释（Explanation of logistic regression cost function）
+在前面的视频中，我们已经分析了逻辑回归的损失,"> 
+    <meta name="author" content="salcabar"> 
+    <link rel="alternative" href="atom.xml" title="Love Letter" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+</head>
+</html>
+<body class="loading">
+    <span id="config-title" style="display:none">Love Letter</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">2018读书笔记——货币金融学（弗雷德里克.S.米什金）(一)</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">2018读书笔记——货币金融学（弗雷德里克.S.米什金）(一)</h1>
+        <div class="stuff">
+            <span>六月 13, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/金融/">金融</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>米什金的货币金融学主要讲了6大篇，共分为25章节.</p>
+<p>其中六大篇主要为：</p>
+<ol>
+<li>
+<p>引言</p>
+</li>
+<li>
+<p>金融市场</p>
+</li>
+<li>
+<p>金融机构</p>
+</li>
+<li>
+<p>中央银行与货币政策的实施</p>
+</li>
+<li>
+<p>国际金融与货币政策</p>
+</li>
+<li>
+<p>货币理论。</p>
+</li>
+</ol>
+<hr>
+<p>其中，今天所要学习的第一篇内容，也就是引言部分，主要包括以下3个章节：</p>
+<p>第1章：为什么研究货币、银行与金融市场</p>
+<p>第2章：金融体系概览</p>
+<p>第3章：什么是货币</p>
+<p>在第一篇中</p>
+<h2><span id="所需要理解和掌握的概念如下"> 所需要理解和掌握的概念如下：</span></h2>
+<ol>
+<li>
+<p>总收入（aggregate income)是指在一年内，生产要素（土地 劳动力和资本）在生产产品和服务的过程中所获得的所有收入。</p>
+</li>
+<li>
+<p>普通股（common stock)也就是股票，代表持有者对公司的所有权。</p>
+</li>
+<li>
+<p>国内生产总值（GDP)一个国家在一年内所生产的所有最终产品和服务的市场价值。</p>
+</li>
+<li>
+<p>总产出：一般用GDP来指代</p>
+</li>
+<li>
+<p>电子金融：信息技术的突飞猛进如何激发出新的金融产品，促进金融服务以电子化的方式提供给大家</p>
+</li>
+<li>
+<p>通货膨胀（inflation)物价水平的持续上涨</p>
+</li>
+<li>
+<p>物价总水平：一个经济社会中商品和物价的平均价格</p>
+</li>
+<li>
+<p>通货膨胀率：以年度变动的百分比来反映物价水平变动率</p>
+</li>
+<li>
+<p>联邦储蓄体系：美国中央银行</p>
+</li>
+<li>
+<p>利率：借款成本或为借入资金支付的价格</p>
+</li>
+<li>
+<p>货币政策:对货币以及利率的管理</p>
+</li>
+<li>
+<p>债券：债务证券，承诺在一个特定时间段内进行定期支付。</p>
+</li>
+<li>
+<p>金融市场：主要指债券市场 股票市场和外汇市场</p>
+</li>
+<li>
+<p>证券：发行人对未来收入与资产的索取权</p>
+</li>
+<li>
+<p>资产：金融索取权或隶属于所有权的财产权</p>
+</li>
+<li>
+<p>中央银行：负责一个国家货币政策的机构</p>
+</li>
+<li>
+<p>银行：吸收存款和发放贷款的金融机构</p>
+</li>
+<li>
+<p>金融中介：从储蓄者手中吸取资金，并向需要资金的企业和个人提供贷款的机构</p>
+</li>
+<li>
+<p>经济衰退（recessions)总产出下降的时期</p>
+</li>
+<li>
+<p>经济周期 总产出上升和下降运动</p>
+</li>
+<li>
+<p>汇率：用其他国家货币表示的一国货币的价格</p>
+</li>
+<li>
+<p>货币：在商品或服务支付以及债务偿还中被广泛接受的东西</p>
+</li>
+<li>
+<p>预算盈余：税收收入超过政府支出</p>
+</li>
+<li>
+<p>预算赤字：特定时间内，政府支出超过税收收入</p>
+</li>
+<li>
+<p>外汇市场：货币兑换的场所，资金跨国转移的中介市场</p>
+</li>
+<li>
+<p>失业率：可雇佣劳动力中未就业的比率</p>
+</li>
+<li>
+<p>财政政策：有关政府支出和税收的决策</p>
+</li>
+<li>
+<p>逆向选择：交易之前，信息不对称所导致的问题</p>
+</li>
+<li>
+<p>欧洲货币：欧洲债券的变种，存放在货币发行国之外的银行的外国货币</p>
+</li>
+<li>
+<p>抵押贷款：向家庭或企业发放用于购置房屋 土地或其他建筑物的贷款，这些建筑物或土地即为贷款的抵押品</p>
+</li>
+<li>
+<p>资本：可以用来创造财富的财富，可以是金融财富，也可以是物质财富</p>
+</li>
+<li>
+<p>金融中介化：通过金融中介机构进行间接融资过程</p>
+</li>
+<li>
+<p>一级市场：筹集资金的公司或政府机构将其新发现的股票或债券等证券销售给最初购买者的金融市场</p>
+</li>
+<li>
+<p>二级市场：交易已经发行证券的金融市场</p>
+</li>
+<li>
+<p>经纪人：投资人的代理人，负责匹配证券的买方和卖方</p>
+</li>
+<li>
+<p>交易商：按照报价买卖证券，从而将交易双方连接起来</p>
+</li>
+<li>
+<p>投资银行：在一级市场协助证券出售的金融机构</p>
+</li>
+<li>
+<p>证券承销（unterwritting)确保公司证券能够按照某一价格出售，再向公众销售这些证券</p>
+</li>
+<li>
+<p>联邦基金：银行在美联储存款的隔夜贷款（银行之间的贷款）</p>
+</li>
+<li>
+<p>资产组合（portfolio)投资于收益变动方向不一致的一系列资产</p>
+</li>
+<li>
+<p>货币市场：交易短期债务的工具</p>
+</li>
+<li>
+<p>资本市场：交易长期债务的工具</p>
+</li>
+<li>
+<p>交易所：证券的买卖双方在一个集中的场所进行交易的二级市场</p>
+</li>
+<li>
+<p>信息不对称：交易一方对另一方缺乏充分的了解，以至于无法做出正确的决定</p>
+</li>
+<li>
+<p>风险：投资者对收益的不确定性</p>
+</li>
+<li>
+<p>交易成本：金融交易过程中所需要耗费的时间和金钱</p>
+</li>
+<li>
+<p>资产转换：风险分担的过程</p>
+</li>
+<li>
+<p>金融恐慌：金融机构大范围倒闭</p>
+</li>
+<li>
+<p>欧洲债券：外国市场上发行，并非以发行国货币计价的证券</p>
+</li>
+<li>
+<p>股票：对公司净资产和收入的索取权</p>
+</li>
+<li>
+<p>股利：股权工具的持有者可以得到定期支付</p>
+</li>
+<li>
+<p>违约（default)债务工具发行人无力偿付利息</p>
+</li>
+<li>
+<p>规模经济：伴随着交易规模的扩大，平摊在每一美元的成本有所降低</p>
+</li>
+<li>
+<p>流动性服务：使得客户交易成本更低的服务</p>
+</li>
+<li>
+<p>利益冲突：一种道德风险问题</p>
+</li>
+<li>
+<p>货币：在产品和服务支付以及债务偿还中被普遍接受的东西</p>
+</li>
+<li>
+<p>收入：单位时间段内收益的流量</p>
+</li>
+<li>
+<p>交易媒介：以通货或支票出现的货币</p>
+</li>
+<li>
+<p>流动性：某一资产转化为交易媒介的便利程度和速度</p>
+</li>
+<li>
+<p>价值储藏：跨越时间段的购买力的储藏</p>
+</li>
+<li>
+<p>不兑现纸币：政府将纸币宣布为法定偿还货币，而不能转化为硬币或者<br>
+贵金属</p>
+</li>
+<li>
+<p>货币总量：计量货币的单位</p>
+</li>
+<li>
+<p>M1:货币总量的计量指标=通货+旅行者支票<br>
+=活期存款+其他支票存款</p>
+</li>
+<li>
+<p>M2:M1+储蓄存款与货币市场存款账户+货币市场共同基金份额+小额定期存款</p>
+</li>
+</ol>
+<hr>
+<h2><span id="第一篇第1章到第3章-所需要掌握的思考题"> 第一篇，第1章到第3章 所需要掌握的思考题</span></h2>
+<h3><span id="1-如果历史是可以重演的当我们发现货币增长率在下降时我们可以预测下列经济变量将要发生什么变化货币与利率正相关"> 1. 如果历史是可以重演的，当我们发现货币增长率在下降时，我们可以预测下列经济变量将要发生什么变化：【货币与利率正相关】</span></h3>
+<p>总产出？ 下降</p>
+<p>通货膨胀率？下降</p>
+<p>利率？ 下降：所谓的利率就是银行吸收储户存款而支付给他们的报酬率。货币的供给增加一般称为宽松的货币政策，是一国鼓励投资和消费，刺激经济的政策的一种。由此看来，势必不会鼓励储户存款，所以利率当然要相应下降。</p>
+<h3><span id="2-当rmb相对于其他国家货币的价值上升时你更愿意购买国产还是外国产的牛仔裤rmb走强还是走弱时我国生产牛仔裤的企业会更加高兴我国进口牛仔裤的贸易公司会受到rmb汇率怎样怎样的影响"> 2. 当RMB相对于其他国家货币的价值上升时，你更愿意购买国产还是外国产的牛仔裤?RMB走强还是走弱时，我国生产牛仔裤的企业会更加高兴？我国进口牛仔裤的贸易公司会受到RMB汇率怎样怎样的影响？</span></h3>
+<p>RMB升值 → 国际购买力增强 → 乐意购买外国产的牛仔裤</p>
+<p>RMB走强 → 对外国企业来说进口本国牛仔裤成本增加 → 不乐意进口我国牛仔裤 → 我国牛仔裤生产企业交易机会减少 → 因而走弱时，我国生产牛仔裤的企业会更高兴。</p>
+<p>RMB汇率高 → 我国企业国际购买力增强 → 乐意进口 → 反之亦然。</p>
+<h3><span id="3国外投资者持有的美国债务主要是政府债券和国库券-美元汇率变动会如何影响外国投资者所持有的美元债务的价值"> 3.国外投资者持有的美国债务主要是政府债券和国库券。美元汇率变动会如何影响外国投资者所持有的美元债务的价值？</span></h3>
+<p>美元汇率走强，同等价值的美元就能兑换更多的外国货币。这样的话外国投资者的购买的债务就会增值。美元走弱，单位美元兑换的外国货币减少，这样的话外国投资者持有的债务价值就变少。</p>
+<h3><span id="4为什么ibm公司发行的普通股代表着所有者的资产和ibm的负债"> 4.为什么IBM公司发行的普通股代表着所有者的资产和IBM的负债？</span></h3>
+<p>IBM股票对其持有人来说是一项资产，因为股票持有人可据此分享IBM公司的收益和资产。对于IBM公司来说，股票是一项负债，因为股票代表了持有人对公司的收入和资产拥有索取权。</p>
+<h3><span id="5如果我今天购买一辆5000美元的汽车明年我就可以赚取10000美元的额外收入因为这辆汽车可以帮助我找到一份工作-在没有人愿意借款给我的情况下我是否应当以90的利息从高利贷那里借款获取这笔贷款会改善还是恶化我的经济状况你能否举出高利贷合法的论据"> 5.如果我今天购买一辆5000美元的汽车，明年我就可以赚取10000美元的额外收入，因为这辆汽车可以帮助我找到一份工作。在没有人愿意借款给我的情况下，我是否应当以90%的利息从高利贷那里借款？获取这笔贷款会改善还是恶化我的经济状况？你能否举出高利贷合法的论据？</span></h3>
+<p>还款为5000*（1+90%）=9500美元</p>
+<p>赚取的10000美元偿还贷款后还余下500美元。应当从高利贷那里借款。</p>
+<p>这笔借款使我拥有了一辆汽车，同时还找到了工作，改善了经济状况。</p>
+<p>高利贷合法的论据在于在一定条件下可以改善借贷双方的福利。</p>
+<p>但是我们否认高利贷合法的原因在于，高利贷往往会产生暴力，对社会稳定无益。</p>
+<h3><span id="619世纪时美国曾向英国大量举债用以修建铁路系统那时使用的主要债务工具是什么为什么这么做对两个国家都是有利的"> 6.19世纪时，美国曾向英国大量举债用以修建铁路系统，那时使用的主要债务工具是什么？为什么这么做对两个国家都是有利的？</span></h3>
+<p>外国证券-在国外发行并以发行国货币计价的证券。美国19世纪所修造的铁路，大部分是通过在英国金融市场上发行外国证券（以英镑计价）来筹资的。</p>
+<p>美国因筹集到资金而得以进行修建铁路，英国因美国的贷款而获得大量利息。两国居民的福利都因此而得以改善。</p>
+<h3><span id="7-对以下说法做出评论因为企业并没有从二级市场实际获取资金因此二级市场对经济而言的重要性不如一级市场"> 7、对以下说法做出评论：“因为企业并没有从二级市场实际获取资金，因此二级市场对经济而言的重要性不如一级市场。”</span></h3>
+<blockquote>
+<p>错。</p>
+</blockquote>
+<p>二级市场发挥着重要的功能。</p>
+<p>其一，它们使得为筹资而出售金融工具的行为更加容易和快捷，也就是说，它们使得金融工具具有更好的流动性。金融工具流动性的提高，增加了它们在金融市场上的接受度，从而使得发行企业在一级市场上的销售变得更为容易。</p>
+<p>其二，二级市场决定了发行企业在一级市场上销售证券的价格。投资者在一级市场上购买证券的价格绝不会高于他们对二级市场上该证券价格的预期。</p>
+<p>所以，如要比较，二级市场的重要性超过一级市场。</p>
+<h3><span id="8-如果你怀疑一家公司可能在明年破产相比较而言你愿意持有这家公司的股票还是债券为什么"> 8、如果你怀疑一家公司可能在明年破产，相比较而言，你愿意持有这家公司的股票还是债券？为什么？</span></h3>
+<p>债券。</p>
+<p>公司在向股权持有者支付前，必须完成向所有债权人的支付。</p>
+<p>从法学的角度上说，股东需以投入的资产为限，对公司承担有限责任。而债权人无此要求。</p>
+<h3><span id="9-如何用逆向选择来解释你更愿意将贷款发放给一位家庭成员而不是一个陌生人"> 9。如何用逆向选择来解释你更愿意将贷款发放给一位家庭成员而不是一个陌生人？</span></h3>
+<p>对家庭成员的了解更为充分，有利于决策的正确性。出现信息不对称和逆向选择的机率更小。</p>
+<h3><span id="10-想出一个你不得不处理逆向选择问题的例子"> 10。想出一个你不得不处理逆向选择问题的例子。</span></h3>
+<p>假如我有两个朋友。两人均想向我借1000元。</p>
+<p>朋友A性格稳重，投资总是谨慎小心，只有在确认投资项目具备清偿能力的情况下才会借款。</p>
+<p>朋友B富于冒险精神，喜欢投资收益大，风险高的项目。</p>
+<p>如果我了解我A和B，即我们之间的信息是对称的，我肯定愿意借钱给A，因为A的信贷风险相当低。</p>
+<p>但更可能向我借钱的是B，因为如果成功，他将获得大量收益。</p>
+<p>在信息不对称的情况下，我也更可能借钱给B。</p>
+<p>由于逆向选择的存在，我可能拒绝A和B任何一位借钱的请求。</p>
+<h3><span id="11为什么与其他贷款人比较高利贷者对借款人的道德风险不太担忧"> 11.为什么与其他贷款人比较，高利贷者对借款人的道德风险不太担忧？</span></h3>
+<p>暴力胁迫。</p>
+<p>高利贷借款人道德风险增加的可能性大。</p>
+<h3><span id="12如果你是一位雇主你会担心你的雇员有哪些道德风险问题"> 12.如果你是一位雇主，你会担心你的雇员有哪些道德风险问题？</span></h3>
+<p>例如，要求预付工资，却不认真完成工作。</p>
+<h3><span id="13如果借款人和贷款人之间不存在信息不对称那么还会出现道德风险问题吗"> 13.如果借款人和贷款人之间不存在信息不对称，那么还会出现道德风险问题吗？</span></h3>
+<p>会，因为如果你知道某借款人正在采取可能危及贷款偿还的行动，你必须阻止他的行为。这样做的成本也许会很高，所以你可能不会花费时间和精力来减少道德风险，因而道德风险的问题仍然存在。</p>
+<h3><span id="14为什么你愿意以5的利率将资金存放在银行的储蓄账户然后由银行以10的利率贷放给你的邻居而不是直接将这笔资金借给你的邻居呢"> 14.为什么你愿意以5%的利率将资金存放在银行的储蓄账户，然后由银行以10%的利率贷放给你的邻居，而不是直接将这笔资金借给你的邻居呢？</span></h3>
+<p>涉及到资产转移和风险分担的问题。</p>
+<p>而且向邻居放贷的费用太高（律师费、资信费）。</p>
+<h3><span id="15风险分担如何给金融中介和私人投资者都带来利益"> 15.风险分担如何给金融中介和私人投资者都带来利益？</span></h3>
+<p>金融中介机构所涉及和提供的资产品种和风险在投资者所承受的范围之内，之后，金融中介机构将销售这些资产所获取的资金去购买风险大得多的资产。从某种意义上说，风险资产被转化为对投资者而言安全性更高的资产，减少了投资者的风险。</p>
+<p>低交易成本允许金融中介机构以较低的成本进行风险分担，使得它们能够获取风险资产的收益与已出售资产的成本之间的差额，这也是金融中介机构的利润。</p>
+<h3><span id="16为什么高利贷者对借款人的道德风险不太担忧"> 16.为什么高利贷者对借款人的道德风险不太担忧？</span></h3>
+<p>“Loan sharks can threaten their borrowers with bodily harm if borrowers take actions that might jeopardize their paying off the loan. Hence borrowers from loan shark are less likely to increase moral hazard.”</p>
+<h3><span id="17在没有信息和交易成本的世界里不会有金融中介机构的存在-这种说法是正确的-错误的还是不确定说明你的理由"> 17.在没有信息和交易成本的世界里，不会有金融中介机构的存在。”这种说法是正确的、错误的还是不确定？说明你的理由。</span></h3>
+<p>正确。如果没有信息和交易成本，人们相互贷款将无成本无代价进行交易，因此金融机构就没有存在的必要了。</p>
+<h3><span id="18风险分担是如何让金融中介机构和私人投资都从中获益的"> 18.风险分担是如何让金融中介机构和私人投资都从中获益的？</span></h3>
+<p>风险分担是指金融中介机构所设计和提供的资产品种的风险在投资者所承认的范围之内，之后，金融中介机构将销售这些资产所获取的资产去购买风险大得多的资产。</p>
+<p>低交易成本允许金融中介机构以较低的成本进行风险分担，使得它们能够获取风险资产的收益与出售资产的成本间的差额，这也是金融中介机构的利润。</p>
+<p>对投资者而言，金融资产被转化为安全性更高的资产，减少了其面临的风险。</p>
+<h3><span id="19为什么19实际的美国人有时更愿意接受支票而非黄金支付尽管他们知道支票有时可能会遭到退票"> 19.为什么19实际的美国人有时更愿意接受支票而非黄金支付，尽管他们知道支票有时可能会遭到退票</span></h3>
+<p>支票比黄金更易于携带。尽管有可能遭到退票，但使用支票的交易成本远低于携带黄金。所以有时更愿意接受支票支付。</p>
+<h3><span id="20在美国联邦储备体系的货币总量m1和m2中哪个由流动性最强的资产组成哪个是范畴最大的计量指标"> 20.在美国联邦储备体系的货币总量M1和M2中，哪个由流动性最强的资产组成?哪个是范畴最大的计量指标？</span></h3>
+<p>M1包括了最强的流动性资产</p>
+<p>M2范畴最大</p>
+<h3><span id="21假设一个研究者发现在过去的20年中美国经济的债务总额比m1和m2能更好地预测通货膨胀和经济周期这是否意味着我们应当将货币定义为等于经济中的债务总额"> 21.假设一个研究者发现，在过去的20年中，美国经济的债务总额比M1和M2能更好地预测通货膨胀和经济周期，这是否意味着，我们应当将货币定义为等于经济中的债务总额？</span></h3>
+<p>不一定。虽然债务总量能相对更加准确地预测通货膨胀和经济周期，在未来却未必依然是一定准确的。我们无法将未来的债务总额精确预测，所以我们不可以将货币等同于债务总量。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src>
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>
